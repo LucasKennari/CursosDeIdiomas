@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CursoDeIdiomas", "CursoDeIdiomas\CursoDeIdiomas.csproj", "{11432ECA-1F93-4D3F-B760-BBA6D2362AB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CursoDeIdiomas", "CursoDeIdiomas.csproj", "{07B7BE89-053C-4D51-BF63-6C8A230EE0EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{11432ECA-1F93-4D3F-B760-BBA6D2362AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11432ECA-1F93-4D3F-B760-BBA6D2362AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11432ECA-1F93-4D3F-B760-BBA6D2362AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11432ECA-1F93-4D3F-B760-BBA6D2362AB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07B7BE89-053C-4D51-BF63-6C8A230EE0EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B7BE89-053C-4D51-BF63-6C8A230EE0EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B7BE89-053C-4D51-BF63-6C8A230EE0EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B7BE89-053C-4D51-BF63-6C8A230EE0EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {83529106-EE77-45D6-A87E-64674E4BD6CC}
+		SolutionGuid = {69664260-6992-4C9D-A6ED-109E5E4C41B8}
 	EndGlobalSection
 EndGlobal
