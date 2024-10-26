@@ -9,10 +9,14 @@ namespace CursoDeIdiomas.Mappings
         public void Configure(EntityTypeBuilder<TurmasEntity> builder)
         {
             builder.ToTable("Turmas");
+
+            builder.HasMany(t => t.AlunoTurmas)
+                .WithOne(at => at.Turma)
+                .HasForeignKey(at => at.TurmaId);
+
             builder.Property(t => t.Codigo).IsRequired();
             builder.Property(t => t.Nivel).IsRequired();
-
-            builder.Property(t => t.AlunoID).IsRequired();
+            builder.Property(t => t.AlunoId).IsRequired();
 
 
         }
