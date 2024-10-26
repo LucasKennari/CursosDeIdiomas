@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CursoDeIdiomas.Migrations
 {
     [DbContext(typeof(CursoDeIdiomasContext))]
-    [Migration("20241020025553_init")]
+    [Migration("20241026144241_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -23,6 +23,24 @@ namespace CursoDeIdiomas.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CursoDeIdiomas.Models.AlunoTurmasEntity", b =>
+                {
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TurmaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("AlunoId", "TurmaId");
+
+                    b.HasIndex("TurmaId");
+
+                    b.ToTable("AlunoTurmas", (string)null);
+                });
 
             modelBuilder.Entity("CursoDeIdiomas.Models.AlunosEntity", b =>
                 {
@@ -65,10 +83,7 @@ namespace CursoDeIdiomas.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AlunoID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AlunosId")
+                    b.Property<int>("AlunoId")
                         .HasColumnType("int");
 
                     b.Property<int>("Codigo")
@@ -80,20 +95,36 @@ namespace CursoDeIdiomas.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AlunosId");
-
                     b.ToTable("Turmas", (string)null);
+                });
+
+            modelBuilder.Entity("CursoDeIdiomas.Models.AlunoTurmasEntity", b =>
+                {
+                    b.HasOne("CursoDeIdiomas.Models.AlunosEntity", "Aluno")
+                        .WithMany("AlunoTurmas")
+                        .HasForeignKey("AlunoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CursoDeIdiomas.Models.TurmasEntity", "Turma")
+                        .WithMany("AlunoTurmas")
+                        .HasForeignKey("TurmaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Aluno");
+
+                    b.Navigation("Turma");
+                });
+
+            modelBuilder.Entity("CursoDeIdiomas.Models.AlunosEntity", b =>
+                {
+                    b.Navigation("AlunoTurmas");
                 });
 
             modelBuilder.Entity("CursoDeIdiomas.Models.TurmasEntity", b =>
                 {
-                    b.HasOne("CursoDeIdiomas.Models.AlunosEntity", "Alunos")
-                        .WithMany()
-                        .HasForeignKey("AlunosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Alunos");
+                    b.Navigation("AlunoTurmas");
                 });
 #pragma warning restore 612, 618
         }

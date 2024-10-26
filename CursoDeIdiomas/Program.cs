@@ -1,4 +1,8 @@
 using CursoDeIdiomas.Data;
+using CursoDeIdiomas.Models;
+using CursoDeIdiomas.Repository;
+using CursoDeIdiomas.Repository.Interfaces;
+using CursoDeIdiomas.Servces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +17,14 @@ builder.Services.AddDbContext<CursoDeIdiomasContext>
     
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<AlunosRepository>();
+builder.Services.AddScoped<TurmasRepository>();
+builder.Services.AddScoped<AlunosService>();
+builder.Services.AddScoped<TurmasService>();
+
+builder.Services.AddScoped<IBaseRepository<AlunosEntity>, BaseRepository<AlunosEntity>>();
+builder.Services.AddScoped<IBaseRepository<TurmasEntity>, BaseRepository<TurmasEntity>>();
 
 var app = builder.Build();
 

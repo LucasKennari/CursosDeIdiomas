@@ -9,6 +9,7 @@ namespace CursoDeIdiomas.Data
     {
         public DbSet<AlunosEntity> Alunos { get; set; }
         public DbSet<TurmasEntity> Turmas { get; set; }
+        public DbSet<AlunoTurmasEntity> AlunoTurma { get; set; }
         public CursoDeIdiomasContext(DbContextOptions<CursoDeIdiomasContext> options) : base(options)
         {
             

@@ -33,16 +33,34 @@ namespace CursoDeIdiomas.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Codigo = table.Column<int>(type: "int", nullable: false),
                     Nivel = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AlunoID = table.Column<int>(type: "int", nullable: false),
-                    AlunosId = table.Column<int>(type: "int", nullable: false)
+                    AlunoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Turmas", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AlunoTurmas",
+                columns: table => new
+                {
+                    AlunoId = table.Column<int>(type: "int", nullable: false),
+                    TurmaId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AlunoTurmas", x => new { x.AlunoId, x.TurmaId });
                     table.ForeignKey(
-                        name: "FK_Turmas_Alunos_AlunosId",
-                        column: x => x.AlunosId,
+                        name: "FK_AlunoTurmas_Alunos_AlunoId",
+                        column: x => x.AlunoId,
                         principalTable: "Alunos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AlunoTurmas_Turmas_TurmaId",
+                        column: x => x.TurmaId,
+                        principalTable: "Turmas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -60,19 +78,22 @@ namespace CursoDeIdiomas.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Turmas_AlunosId",
-                table: "Turmas",
-                column: "AlunosId");
+                name: "IX_AlunoTurmas_TurmaId",
+                table: "AlunoTurmas",
+                column: "TurmaId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Turmas");
+                name: "AlunoTurmas");
 
             migrationBuilder.DropTable(
                 name: "Alunos");
+
+            migrationBuilder.DropTable(
+                name: "Turmas");
         }
     }
 }
